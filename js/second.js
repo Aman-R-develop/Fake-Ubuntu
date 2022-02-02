@@ -6,20 +6,19 @@ heading.innerText = inpval;
 localStorage.removeItem("name");
 let wallpaper1 = document.getElementById("wallpaper");
 let timeout;
-let time;
-let c
 const d = new Date();
-if (d.getMinutes().toString.length == 0) {
-    c = "0" + d.getMinutes()
-    time = d.getHours() + ":" + c;
-} else {
-    time = d.getHours() + ":" + d.getMinutes();
+let options = {  
+    hour: "2-digit", minute: "2-digit"  
+};  
+
+let option ={
+    weekday: "long", month: "long", day: "numeric"
 }
 
 let walltime = document.getElementById("wall-time")
 let wallday = document.getElementById("wall-day")
-walltime.innerText = time;
-wallday.innerText = new Date().toLocaleDateString();
+walltime.innerText = d.toLocaleTimeString("en-us", options);
+wallday.innerText = d.toLocaleDateString("en-us", option);
 
 document.onmousemove = function name() {
     clearTimeout(timeout);
